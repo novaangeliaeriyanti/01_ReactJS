@@ -1,18 +1,18 @@
 import React from "react";
 
-export default function ColumnList(props) {
+export default function ListCheckout(props) {
   return (
     <div>
+      <table>
         <th>Product Id</th>
         <th>Product Name</th>
         <th>Category</th>
         <th>Price</th>
         <th>Qty</th>
         <th>SubTotal</th>
-        <th colSpan={3}>Action</th>
         <tbody>
           {(props.listItems || []).map((items) => (
-            <tr key={items.prodId}>
+            <tr key={items.prodId}>     
               <td>{items.prodId}</td>
               <td>{items.name}</td>
               <td>{items.category}</td>
@@ -22,7 +22,7 @@ export default function ColumnList(props) {
             </tr>
           ))}
         </tbody>
-
+      </table>
       <h3>
               Total Harga : Rp.{" "}
               {new Intl.NumberFormat("ID").format(props.totalHarga)}

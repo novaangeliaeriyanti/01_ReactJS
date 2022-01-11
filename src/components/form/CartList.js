@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CartForm from "./CartForm";
+import ListCheckout from "./ListCheckout";
 import TableList from "./TableList";
 
 export default function CartList() {
@@ -220,17 +221,23 @@ export default function CartList() {
           />
           <button onClick={() => setDisplayItems(true)}>Checkout</button>
           {/* {displayItems ? itemsCheck() :  null} */}
-          {displayItems ? <TableList
-            listItems={productCheck}
-            onCheckItem={onCheckItem}
-            productCheck={productCheck}
-            addQty={addQty}
-            minusQty={minusQty}
-            deleteCart={deleteCart}
-            totalHarga={totalHargaList}
-            totalQty={totalQtyList}
-          />
-           :  null}
+          {displayItems ? (
+            <TableList
+              listItems={productCheck}
+              onCheckItem={onCheckItem}
+              productCheck={productCheck}
+              addQty={addQty}
+              minusQty={minusQty}
+              deleteCart={deleteCart}
+              totalHarga={totalHargaList}
+              totalQty={totalQtyList}
+            />
+            // <ListCheckout
+            //   listItems={productCheck}
+            //   totalHarga={totalHargaList}
+            //   totalQty={totalQtyList}
+            // />
+          ) : null}
         </>
       )}
     </div>
