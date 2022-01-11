@@ -1,24 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
+import Counter from './components/basic/Counter';
+import CounterArrow from './components/basic/CounterArrow';
+import CounterHook from './components/basic/CounterHook';
+import ParentName from './components/parentchild/ParentName';
+import ParentComponent from './components/parentchild/ParentComponent';
+import CounterLifeCyle from './components/lifecycle/CounterLifeCyle';
+import EmployeeList from './components/parentchild/EmployeeList';
+import CartListItem from './components/parentchild/CartListItem';
+import CartList from './components/form/CartList';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // <>
+    // {/*   <Counter />
+    //   <CounterArrow />
+    //   <CounterHook/> */}
+    //   <CartListItem/>
+    // </>
+    <CartList/>
   );
 }
 
