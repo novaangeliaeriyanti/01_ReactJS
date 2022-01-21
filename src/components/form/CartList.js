@@ -121,7 +121,6 @@ export default function CartList() {
         if (id === cart.prodId) {
           if (cart.qty === 1) {
             cart.qty = 1;
-            //cart.qty = cart.qty - 1;
           } else {
             cart.qty = cart.qty - 1;
           }
@@ -136,8 +135,6 @@ export default function CartList() {
   };
 
   const deleteCart = (id) => {
-    const cartFilter = carts.filter((el) => el.prodId !== id);
-    //setCarts(cartFilter);
     setCarts([...carts.filter((el) => el.prodId !== id)]);
   };
 
@@ -158,20 +155,30 @@ export default function CartList() {
     setSubCategory(categoryFilter);
   };
 
-  const onCheckItem = (item) => () => {
+  const onCheckItem = (item) => (event) => {
+    let status = event.target.checked;
+    console.log("value of checkbox : ", status);
     console.log(item);
-    setProductCheck([
-      ...productCheck,
-      {
-        prodId: item.prodId,
-        name: item.name,
-        price: item.price,
-        qty: item.qty,
-        subTotal: item.price * item.qty,
-        category: item.category,
-        subCategory: item.subCategory,
-      },
-    ]);
+
+    let tampung = [status, item];
+    console.log(tampung);
+    productCheck.some(productCheck)
+    if (tampung[0] === true) {
+      setProductCheck([
+        ...productCheck,
+        {
+          prodId: item.prodId,
+          name: item.name,
+          price: item.price,
+          qty: item.qty,
+          subTotal: item.price * item.qty,
+          category: item.category,
+          subCategory: item.subCategory,
+        },
+      ]);
+    } else {
+      setProductCheck([...productCheck]);
+    }
 
     setDisplay(false);
   };
@@ -220,23 +227,22 @@ export default function CartList() {
             totalQty={totalQty}
           />
           <button onClick={() => setDisplayItems(true)}>Checkout</button>
-          {/* {displayItems ? itemsCheck() :  null} */}
           {displayItems ? (
-            <TableList
-              listItems={productCheck}
-              onCheckItem={onCheckItem}
-              productCheck={productCheck}
-              addQty={addQty}
-              minusQty={minusQty}
-              deleteCart={deleteCart}
-              totalHarga={totalHargaList}
-              totalQty={totalQtyList}
-            />
-            // <ListCheckout
+            // <TableList
             //   listItems={productCheck}
+            //   onCheckItem={onCheckItem}
+            //   productCheck={productCheck}
+            //   addQty={addQty}
+            //   minusQty={minusQty}
+            //   deleteCart={deleteCart}
             //   totalHarga={totalHargaList}
             //   totalQty={totalQtyList}
             // />
+            <ListCheckout
+              listItems={productCheck}
+              totalHarga={totalHargaList}
+              totalQty={totalQtyList}
+            />
           ) : null}
         </>
       )}

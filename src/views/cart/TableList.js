@@ -16,8 +16,11 @@ export default function TableList(props) {
           {(props.listItems || []).map((items) => (
             <tr key={items.prodId}>
               <td>
-                {/* <input type="checkbox" name="box1" onClick={props.onCheckItem(items)}/> */}
-                <input type="checkbox" name="box1" onClick={props.onCheckItem(items)}/>
+                <input
+                  type="checkbox"
+                  onChange={props.onCheckItem(items)}
+                  // checked={props.productCheck[items.prodId]}
+                />
               </td>
               <td>{items.prodId}</td>
               <td>{items.name}</td>
