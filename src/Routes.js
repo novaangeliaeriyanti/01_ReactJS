@@ -1,19 +1,14 @@
 import React from 'react'
-import { Switch,Redirect,Route } from 'react-router-dom'
-import MainLayout from './layout/MainLayout'
-import AddCategory from './views/category/AddCategory'
-import Categories from './views/category/Categories'
-import Product from './views/product/Product'
-
+import { Navigate, useRoutes } from 'react-router-dom'
+import DashboardLayout from './layout/DashboardLayout'
+import Flexbox from './views/tailwind/Flexbox'
+import Landingpage from "./views/tailwind/Landingpage";
+import DetailPage from './views/tailwind/DetailPage'
 
 export default function Routes() {
-    return (
-        <Switch>
-            <Redirect exact from='/' to='/home'/>
-            <Route path='/home' component={MainLayout}/>
-            <Route exact path='/category' component={Categories}/>
-            <Route exact path='/category/new' component={AddCategory}/>
-            <Route exact path='/product' component={Product}/>
-        </Switch>
-    )
+
+  return useRoutes([
+    { path: "/bootcamp/NodeJS", element: <DetailPage /> },
+    { path: "*", element: <Navigate to="/404" replace /> },
+  ]);
 }

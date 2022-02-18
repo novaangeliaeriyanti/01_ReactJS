@@ -3,14 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import store from './redux/stores';
-import storeToolkit from './features/storeToolkit';
+//import store from './redux/stores';
+//import storeToolkit from './features/storeToolkit';
 import { Provider } from 'react-redux';
 
-import {createBrowserHistory} from 'history';
-import {Router} from 'react-router-dom'
+import { createBrowserHistory } from 'history';
+import { BrowserRouter } from 'react-router-dom'
+import { HelmetProvider } from 'react-helmet-async';
 
-import Routes from './Routes'
+import store from './redux-saga/stores'
+
 
 const browserHistory = createBrowserHistory();
 
@@ -32,10 +34,12 @@ browserHistory.listen(location => {
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={browserHistory}>
-      {/* <Routes/> */}
-      <App/>
-    </Router>
+    <HelmetProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </HelmetProvider>
+
   </Provider>,
   document.getElementById('root')
 );
